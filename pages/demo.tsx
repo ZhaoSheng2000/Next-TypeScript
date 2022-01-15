@@ -14,7 +14,7 @@ export default function MediaControlCard() {
   const theme = useTheme();
 
   return (
-    <Card sx={{ display: 'flex' }}>
+    <Card style={{width:364}} sx={{ display: 'flex' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h5">
@@ -39,7 +39,7 @@ export default function MediaControlCard() {
       <CardMedia
         component="img"
         sx={{ width: 151 }}
-        image="/static/images/cards/live-from-space.jpg"
+        image="https://mui.com/static/images/cards/live-from-space.jpg"
         alt="Live from space album cover"
       />
     </Card>
