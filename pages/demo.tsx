@@ -12,6 +12,7 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 
 export default function MediaControlCard() {
   const theme = useTheme();
+  
   return (
     <Card style={{width:364}} sx={{ display: 'flex' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
