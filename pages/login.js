@@ -1,10 +1,41 @@
 import Head from "next/head";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import axios from "axios"
+import { useEffect, useCallback, useRef, useState } from "react";
 import styles from "../styles/Home.module.css";
+import { useRouter } from "next/router";
+
 
 export default function Login() {
-  const [state, setstate] = useState([]);
+  const [key, setKey] = useState('');
+  const [img, setImg] = useState('');
+  const [login, setLogin] = useState(false);
+  const router = useRouter();
+  useEffect(async () => {
+    let res = await axios.get('/api/qrkey')
+    const key = res.data;
+    setKey(key);
+    let res2 = await axios.get(`/api/qrimg/${key}`)
+    setImg(res2.data)
+  }, []);
+
+  // fetchData是个妙用啊天！！！
+  const fetchData = useCallback(async () => {
+    console.log(key);
+    let res = await axios.get(`/api/checkqr/${key}`)
+    console.log(res.data.body);
+    let code = res.data.body.code
+    if (code === 803) {
+      router.push('/')
+    }
+  }, [key]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      fetchData();
+    }, 5000);
+    return () => clearInterval(timer)
+  }, [fetchData]);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,12 +45,7 @@ export default function Login() {
       </Head>
       <main className={styles.main}>
         <h2>手机app扫码登录更安全哦</h2>
-
-        <div className={styles.grid}>
-          <a className={styles.img}>
-            <img src="https://music.163.com/login?codekey=b158cfb9-9359-43e1-aae8-5658b988be0d"></img>
-          </a>
-        </div>
+        <img src={img}></img>
       </main>
     </div>
   );
