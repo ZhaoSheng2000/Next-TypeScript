@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/footer.js", "pages/api/create_qr/[key].js", "pages/api/qrimg.js", "pages/login.js", "pages/_app.js", "pages/index.js", "pages/api/top_song.js", "pages/api/test.js"],
   "exclude": ["node_modules"]
 }

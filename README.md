@@ -1,1 +1,1 @@
-## 使用 next.js+TypeScript+MUI 构建的项目
+## 使用 next.js 构建的项目
