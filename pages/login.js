@@ -1,5 +1,6 @@
 import Head from "next/head";
 import axios from "axios"
+import Cookies from 'js-cookie'
 import { useEffect, useCallback, useRef, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
@@ -9,22 +10,28 @@ export default function Login() {
   const [key, setKey] = useState('');
   const [img, setImg] = useState('');
   const [login, setLogin] = useState(false);
+  const [avatar, setAvatar] = useState('');
   const router = useRouter();
   useEffect(async () => {
-    let res = await axios.get('/api/qrkey')
-    const key = res.data;
+    let res = await axios.get(`/login/qr/key?timestamp=${Date.now()}`)
+    const key = res.data.data.unikey;
     setKey(key);
-    let res2 = await axios.get(`/api/qrimg/${key}`)
-    setImg(res2.data)
+    let res2 = await axios.get(`/login/qr/create?key=${key}&qrimg=1&timestamp=${Date.now()}`)
+    let qrimg = res2.data.data.qrimg
+    setImg(qrimg)
   }, []);
 
   // fetchData是个妙用啊天！！！
   const fetchData = useCallback(async () => {
+    let res = await axios.get(`/login/qr/check?key=${key}&timestamp=${Date.now()}`)
     console.log(key);
-    let res = await axios.get(`/api/checkqr/${key}`)
-    console.log(res.data.body);
-    let code = res.data.body.code
+    console.log(res.data);
+    let code = res.data.code
+    if (code === 802) {
+      setAvatar(res.data.avatarUrl)
+    }
     if (code === 803) {
+      Cookies.set('musicCookie', res.data.cookie)
       router.push('/')
     }
   }, [key]);
@@ -32,7 +39,7 @@ export default function Login() {
   useEffect(() => {
     const timer = setInterval(() => {
       fetchData();
-    }, 5000);
+    }, 3000);
     return () => clearInterval(timer)
   }, [fetchData]);
 
@@ -46,6 +53,13 @@ export default function Login() {
       <main className={styles.main}>
         <h2>手机app扫码登录更安全哦</h2>
         <img src={img}></img>
+        {
+          avatar ?
+            <img src={avatar} style={{ width: 100, height: 100, borderRadius: 10 }} />
+            : ''
+        }
+
+
       </main>
     </div>
   );

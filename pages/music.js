@@ -1,12 +1,14 @@
 import Head from "next/head";
 import axios from "axios"
 import { useEffect, useCallback, useRef, useState } from "react";
+import Cookies from 'js-cookie'
 import styles from "../styles/Home.module.css";
 
 export default function Music() {
 
     useEffect(async () => {
-        let res = await axios.get('/api/recommend')
+        console.log(Cookies.get());
+        let res = await axios.post(`/recommend/songs`, { "cookie": Cookies.get('musicCookie'), "timestamp": Date.now() })
         console.log(res);
     }, []);
 
