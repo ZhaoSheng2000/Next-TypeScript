@@ -13,26 +13,30 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>Hi! Welcome to my music space &darr;</h1>
         <div className={styles.grid}>
-          <a className={styles.card}>
-            <h2>每日推荐 &rarr;</h2>
-            <p>🎵每日都有新发现</p>
-          </a>
-          <Link href={"/"}>
+          <Link href={'/music'}>
             <a className={styles.card}>
-              <h2>私人雷达 &rarr;</h2>
-              <p>🎵懂你的才是最好的～</p>
+              <h2>每日推荐 &rarr;</h2>
+              <p>🎵每日都有新发现</p>
             </a>
           </Link>
-
-          <a className={styles.card}>
-            <h2>随便听听&rarr;</h2>
-            <p>🎵那就随便来点吧，有声音就行</p>
-          </a>
-
-          <a className={styles.card}>
-            <h2>新歌速递 &rarr;</h2>
-            <p>🎵可以听最新的歌曲了!</p>
-          </a>
+          <Link href={"/music"}>
+            <a className={styles.card}>
+              <h2>私人雷达 &rarr;</h2>
+              <p>🔭懂你的才是最好的～</p>
+            </a>
+          </Link>
+          <Link href={'/music'}>
+            <a className={styles.card}>
+              <h2>心动模式&rarr;</h2>
+              <p>💗今天你心动了吗</p>
+            </a>
+          </Link>
+          <Link href={'/music'}>
+            <a className={styles.card}>
+              <h2>新歌速递 &rarr;</h2>
+              <p>🆕可以听最新的歌曲了!</p>
+            </a>
+          </Link>
         </div>
       </main>
     </div>
