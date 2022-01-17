@@ -13,6 +13,18 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>Hi! Welcome to my music space &darr;</h1>
         <div className={styles.grid}>
+          <Link href={'/topPlaylist'}>
+            <a className={styles.card}>
+              <h2>随便听听&rarr;</h2>
+              <p>🎧来点网友精选吧</p>
+            </a>
+          </Link>
+          <Link href={'/music'}>
+            <a className={styles.card}>
+              <h2>新歌速递 &rarr;</h2>
+              <p>🆕可以听最新的歌曲了!</p>
+            </a>
+          </Link>
           <Link href={'/music'}>
             <a className={styles.card}>
               <h2>每日推荐 &rarr;</h2>
@@ -25,18 +37,7 @@ export default function Home() {
               <p>🔭懂你的才是最好的～</p>
             </a>
           </Link>
-          <Link href={'/music'}>
-            <a className={styles.card}>
-              <h2>心动模式&rarr;</h2>
-              <p>💗今天你心动了吗</p>
-            </a>
-          </Link>
-          <Link href={'/music'}>
-            <a className={styles.card}>
-              <h2>新歌速递 &rarr;</h2>
-              <p>🆕可以听最新的歌曲了!</p>
-            </a>
-          </Link>
+
         </div>
       </main>
     </div>

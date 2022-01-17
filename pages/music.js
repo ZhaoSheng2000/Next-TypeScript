@@ -7,9 +7,8 @@ import styles from "../styles/Home.module.css";
 export default function Music() {
 
     useEffect(async () => {
-        console.log(Cookies.get());
         let res = await axios.post(`/recommend/songs`, { "cookie": Cookies.get('musicCookie'), "timestamp": Date.now() })
-        console.log(res);
+        console.log(res.data);
     }, []);
 
     return (
