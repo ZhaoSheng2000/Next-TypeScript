@@ -4,6 +4,7 @@ import { useEffect, useCallback, useRef, useState } from "react";
 import Cookies from 'js-cookie'
 import styles from "../styles/Home.module.css";
 import Album from "../components/block-music"
+import AppBar from "../components/app-bar"
 import styled from "styled-components"
 
 
@@ -36,6 +37,7 @@ export default function Music() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <App>
+                <AppBar />
                 <h2>网友精选碟</h2>
                 <ContentContainer >
                     <Album
