@@ -32,7 +32,6 @@ export default function Component() {
       <Link href="/">
         <StyledArrowLeft size={48} />
       </Link>
-      <div></div>
     </AppBar>
   )
 }

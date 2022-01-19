@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 
-const BlockAlbum = styled.a`
+const BlockAlbum = styled.div`
   display: block;
   text-decoration: none;
   color: inherit;
@@ -47,24 +47,25 @@ const YearAndGenre = styled.div`
 `
 
 export default function Component({
-  name,
-  id,
-  url,
-  tag
+    name,
+    id,
+    author,
+    url,
+    albumname
 }) {
-  return (
-    <BlockAlbum href={`album/${id}`} target="blank">
-      <picture style={{ fontSize: 0 }}>
-        <source
-          srcSet={url}
-          type="image/jpg"
-        ></source>
-        <ArtWork src={url} alt={name} />
-      </picture>
-      <Name>{name}</Name>
-      <YearAndGenre>
-        {tag}
-      </YearAndGenre>
-    </BlockAlbum>
-  )
+    return (
+        <BlockAlbum href={''}>
+            <picture style={{ fontSize: 0 }}>
+                <source
+                    srcSet={url}
+                    type="image/jpg"
+                ></source>
+                <ArtWork src={url} alt={name} />
+            </picture>
+            <Name>{name}</Name>
+            <YearAndGenre>
+                {tag}
+            </YearAndGenre>
+        </BlockAlbum>
+    )
 }

@@ -13,7 +13,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>Hi! Welcome to my music space &darr;</h1>
         <div className={styles.grid}>
-          <Link href={'/topPlaylist'}>
+          <Link href={'/album'}>
             <a className={styles.card}>
               <h2>随便听听&rarr;</h2>
               <p>🎧来点网友精选吧</p>
