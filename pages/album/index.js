@@ -6,6 +6,7 @@ import styles from "../../styles/Home.module.css";
 import Album from "../../components/block-music"
 import AppBar from "../../components/app-bar"
 import styled from "styled-components"
+import Link from "next/link";
 
 
 const ContentContainer = styled.div`
@@ -27,7 +28,7 @@ export default function Music() {
 
     useEffect(async () => {
         let res = await axios.post(`/top/playlist`, { "cookie": Cookies.get('musicCookie'), "limit": 30, })
-        console.log(res.data);
+        console.log(res.data.playlists);
         setAlbums(res.data.playlists)
     }, []);
 
@@ -51,8 +52,6 @@ export default function Music() {
                             tag={item.tags.map(i => (i + ' '))}
                         />
                     ))}
-
-
                 </ContentContainer>
             </App >
         </div >

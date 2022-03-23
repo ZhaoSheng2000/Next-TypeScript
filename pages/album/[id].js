@@ -1,20 +1,19 @@
 import Head from "next/head";
 import axios from "axios"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
 import { useRouter } from 'next/router';
 
 
 export default function Music() {
-
-    const router = useRouter();
-    const { id } = router.query;
-    console.log(id);
+    const router = useRouter()
+    const { id } = router.query
     useEffect(async () => {
-        let res = await axios.post(`/playlist/track/all?id=${id}&limit=30&offset=0`)
-        console.log(res.data);
-    }, []);
-
+        if (id !== undefined) {
+            let res = await axios.post(`/playlist/track/all?id=${id}&limit=30&offset=0`)
+            console.log(res.data.songs);
+        }
+    }, [id]);
     return (
         <div className={styles.container}>
             <Head >

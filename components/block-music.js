@@ -1,3 +1,4 @@
+import Link from "next/link"
 import * as React from "react"
 import styled from "styled-components"
 
@@ -53,18 +54,21 @@ export default function Component({
   tag
 }) {
   return (
-    <BlockAlbum href={`album/${id}`} target="blank">
-      <picture style={{ fontSize: 0 }}>
-        <source
-          srcSet={url}
-          type="image/jpg"
-        ></source>
-        <ArtWork src={url} alt={name} />
-      </picture>
-      <Name>{name}</Name>
-      <YearAndGenre>
-        {tag}
-      </YearAndGenre>
-    </BlockAlbum>
+    <Link href={`album/${id}`}>
+      <BlockAlbum>
+        <picture style={{ fontSize: 0 }}>
+          <source
+            srcSet={url}
+            type="image/jpg"
+          ></source>
+          <ArtWork src={url} alt={name} />
+        </picture>
+        <Name>{name}</Name>
+        <YearAndGenre>
+          {tag}
+        </YearAndGenre>
+      </BlockAlbum >
+    </Link>
+
   )
 }
