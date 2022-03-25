@@ -21,7 +21,6 @@ export default function Login() {
     setImg(qrimg)
   }, []);
 
-  // callback是个妙用啊天！！！
   const fetchData = useCallback(async () => {
     let res = await axios.get(`/login/qr/check?key=${key}&timestamp=${Date.now()}`)
     console.log(key);

@@ -6,9 +6,6 @@ import styles from "../../styles/Home.module.css";
 import Album from "../../components/block-music"
 import AppBar from "../../components/app-bar"
 import styled from "styled-components"
-import Link from "next/link";
-
-
 const ContentContainer = styled.div`
   display: grid;
   gap: 1.25rem 1rem;
@@ -22,6 +19,7 @@ const App = styled.main`
 margin: 0 2rem;
 max-width: 42rem;
 `
+
 
 export default function Music() {
     const [albums, setAlbums] = useState([]);
@@ -40,7 +38,7 @@ export default function Music() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <App>
-                <AppBar />
+                <AppBar url={'/'} />
                 <h2>网友精选碟</h2>
                 <ContentContainer >
                     {albums.map(item => (

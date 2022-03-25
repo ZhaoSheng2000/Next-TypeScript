@@ -1,6 +1,19 @@
 import Link from "next/link"
 import * as React from "react"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
+import { ArrowRight } from "react-feather"
+
+
+// 通过keyframes创建动画
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
 
 const BlockAlbum = styled.a`
   display: block;
@@ -9,6 +22,7 @@ const BlockAlbum = styled.a`
 `
 
 const ArtWork = styled.img`
+  z-index: 2;
   border-radius: 0.375rem;
   width: 100%;
   border: 1px solid hsl(0, 0%, 0%, 0.04);
@@ -18,6 +32,7 @@ const ArtWork = styled.img`
   @media (min-width: 768px) {
     border-radius: 0.5rem;
   }
+
 `
 
 const Name = styled.div`
@@ -27,16 +42,6 @@ const Name = styled.div`
   margin-top: 2px;
   @media (min-width: 768px) {
     font-size: 15px;
-  }
-`
-const Artist = styled.div`
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  color: rgba(0, 5, 27, 0.58);
-  margin-top: 2px;
-  @media (min-width: 768px) {
-    font-size: 13px;
   }
 `
 const YearAndGenre = styled.div`

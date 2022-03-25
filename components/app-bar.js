@@ -26,12 +26,14 @@ const StyledArrowLeft = styled(ArrowLeft)`
   }
 `
 
-export default function Component() {
+export default function Component({
+  url,
+}) {
   return (
     <AppBar>
-      <Link href="/">
+      <Link href={url}>
         <StyledArrowLeft size={48} />
       </Link>
-    </AppBar>
+    </AppBar >
   )
 }

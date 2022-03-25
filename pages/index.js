@@ -33,7 +33,7 @@ export default function Home() {
           </Link>
           <Link href={"/music"}>
             <a className={styles.card}>
-              <h2>私人雷达 &rarr;</h2>
+              <h2>私人雷达(暂时没有) &rarr;</h2>
               <p>🔭懂你的才是最好的～</p>
             </a>
           </Link>
