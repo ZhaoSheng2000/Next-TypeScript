@@ -1,3 +1,11 @@
+/*
+ * @Author: Sam Zhao
+ * @Date: 2022-01-17 21:00:21
+ * @LastEditTime: 2023-02-11 13:55:54
+ * @LastEditors: Sam Zhao
+ * @Description: 主页
+ * Copyright 2023 Sam Zhao, All Rights Reserved. 
+ */
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
@@ -16,7 +24,7 @@ export default function Home() {
           <Link href={'/album'}>
             <a className={styles.card}>
               <h2>随便听听&rarr;</h2>
-              <p>🎧来点网友精选吧</p>
+              <p>🎧来点推荐歌单吧</p>
             </a>
           </Link>
           <Link href={'/music'}>

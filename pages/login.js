@@ -1,3 +1,11 @@
+/*
+ * @Author: Sam Zhao
+ * @Date: 2022-01-16 17:13:23
+ * @LastEditTime: 2023-02-11 13:33:40
+ * @LastEditors: Sam Zhao
+ * @Description: 
+ * Copyright 2023 Sam Zhao, All Rights Reserved. 
+ */
 import Head from "next/head";
 import axios from "axios"
 import Cookies from 'js-cookie'
@@ -11,27 +19,33 @@ export default function Login() {
   const [img, setImg] = useState('');
   const [login, setLogin] = useState(false);
   const [avatar, setAvatar] = useState('');
+  const [message, setMessage] = useState('等待扫码');
   const router = useRouter();
   useEffect(async () => {
-    let res = await axios.get(`/login/qr/key?timestamp=${Date.now()}`)
-    const key = res.data.data.unikey;
+    let res = await axios.get(`/login/qr/key`)
+    const key = res.data.body.data.unikey;
     setKey(key);
     let res2 = await axios.get(`/login/qr/create?key=${key}&qrimg=1&timestamp=${Date.now()}`)
-    let qrimg = res2.data.data.qrimg
+    let qrimg = res2.data.body.data.qrimg
     setImg(qrimg)
   }, []);
 
   const fetchData = useCallback(async () => {
     let res = await axios.get(`/login/qr/check?key=${key}&timestamp=${Date.now()}`)
-    console.log(key);
-    console.log(res.data);
-    let code = res.data.code
-    if (code === 802) {
-      setAvatar(res.data.avatarUrl)
-    }
-    if (code === 803) {
+    let code = res.data.body.code
+    console.log(res.data.body.code);
+    if (code === 800) {
+      setMessage('二维码已过期，请刷新页面后重试')
+    } else if (code === 801) {
+      setMessage('等待扫码')
+    } else if (code === 802) {
+      setAvatar(res.data.body.avatarUrl)
+      setMessage('请在移动端确认登陆')
+    } else if (code === 803) {
       Cookies.set('musicCookie', res.data.cookie)
       router.push('/')
+    } else {
+      setMessage('未知错误')
     }
   }, [key]);
 
@@ -57,7 +71,7 @@ export default function Login() {
             <img src={avatar} style={{ width: 100, height: 100, borderRadius: 10 }} />
             : ''
         }
-
+        <h3>{message}</h3>
 
       </main>
     </div>

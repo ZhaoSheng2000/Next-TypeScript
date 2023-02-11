@@ -1,19 +1,17 @@
+/*
+ * @Author: Sam Zhao
+ * @Date: 2022-01-17 23:41:13
+ * @LastEditTime: 2023-02-11 14:05:31
+ * @LastEditors: Sam Zhao
+ * @Description: 歌单卡片组件
+ * Copyright 2023 Sam Zhao, All Rights Reserved. 
+ */
 import Link from "next/link"
 import * as React from "react"
 import styled, { keyframes } from "styled-components"
 import { ArrowRight } from "react-feather"
 
 
-// 通过keyframes创建动画
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-`;
 
 const BlockAlbum = styled.a`
   display: block;
@@ -32,14 +30,13 @@ const ArtWork = styled.img`
   @media (min-width: 768px) {
     border-radius: 0.5rem;
   }
-
 `
-
 const Name = styled.div`
-  font-weight: 500;
+  font-weight: 600;
   font-size: 14px;
   line-height: 16px;
-  margin-top: 2px;
+  margin-top: 10px;
+  line-height: normal;
   @media (min-width: 768px) {
     font-size: 15px;
   }
@@ -51,7 +48,6 @@ const YearAndGenre = styled.div`
   color: #a7a7a9;
   margin-top: 2px;
 `
-
 export default function Component({
   name,
   id,
